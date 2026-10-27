@@ -11,12 +11,28 @@ body {
     padding: 20px;
 }
 
+.layout {
+    display: grid;
+    min-height: 100vh;
+    gap: 20px; 
+    
+    grid-template-areas: 
+        "header header"
+        "nav nav"
+        "sidebar content"
+        "kontak kontak";
+    
+    grid-template-columns: 280px 1fr; 
+    grid-template-rows: auto auto 1fr auto;
+}
+
 header {
+    grid-area: header;
     background-color: #2c3e50;
     color: #ffffff;
     padding: 20px;
     text-align: center;
-    margin-bottom: 20px;
+    border-radius: 6px;
 }
 
 header h1 {
@@ -28,18 +44,11 @@ header p {
     font-size: 1.1em;
 }
 
-.card {
-    background-color: #ffffff;
-    border: 1px solid #dcdde1;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-}
-
 nav {
+    grid-area: nav;
     background-color: #34495e;
     padding: 10px;
-    margin-bottom: 20px;
+    border-radius: 6px;
 }
 
 nav ul {
@@ -63,14 +72,52 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+aside.sidebar {
+    grid-area: sidebar;
+    background-color: #ffffff;
+    border: 1px solid #dcdde1;
+    padding: 20px;
+    border-radius: 6px;
+    height: fit-content;
+}
+
+main.content {
+    grid-area: content;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #dcdde1;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.card:last-child {
+    margin-bottom: 0;
+}
+
 #kontak {
+    grid-area: kontak;
     background-color: #2c3e50;
     color: #ffffff;
     padding: 20px;
-    margin-top: 20px;
     text-align: center;
+    border-radius: 6px;
 }
 
 #kontak a {
-    color: #3498db
+    color: #3498db;
+} 
+
+@media (max-width: 768px) {
+    .layout {
+        grid-template-areas: 
+            "header"
+            "nav"
+            "sidebar"
+            "content"
+            "kontak";
+        grid-template-columns: 1fr;
+    }
 }
